@@ -2,31 +2,238 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.center{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.leftrail{
+    min-height:100vh;
+    position:relative;
+    top:0;
+    left:-180px;
+    width:300px;
+    transition: all 300ms cubic-bezier(0.65, 0.05, 0.36, 1);
+    will-change: left, width;
+    box-shadow: inset -1px 0 10px rgba(0, 0, 0, 0.4);
+    background: #fff;
+}
+
+.field-set{
+  border-bottom: 3px solid #aaa;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: auto;
+  height: 150px;
+}
+
+/* =================   tagsInput styles    =============== */
+
+.react-tagsinput {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-left: 5px;
+  padding-top: 5px;
+  border-radius: 3px;
+  height: 100px;
+  margin: 30px 0px 30px 0px;
+}
+
+.react-tagsinput .custom {
+  height: 0px;
+}
+.react-tagsinput::-webkit-scrollbar {
+width: 7px;
+height: 2px;
+}
+
+.react-tagsinput::-webkit-scrollbar-track {
+background: #f5f5f5;
+border-radius: 10px;
+}
+
+.react-tagsinput::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background: #CCC;
+}
+
+.react-tagsinput::-webkit-scrollbar-thumb:hover {
+background: #999;
+}
+
+.react-tagsinput::-moz-scrollbar {
+width: 7px;
+height: 2px;
+}
+.react-tagsinput::-moz-scrollbar-track {
+background: #f5f5f5;
+border-radius: 10px;
+}
+
+.react-tagsinput::-moz-scrollbar-thumb {
+border-radius: 10px;
+background: #ccc;
+}
+
+.react-tagsinput::-moz-scrollbar-thumb:hover {
+background: #999;
+}
+
+.react-tagsinput--focused {
+  border-color: #0d0e0d;
+}
+
+
+.react-tagsinput-tag {
+  background-color: #cde69c;
+  border: 1px solid #a5d24a;
+  color: #638421;
+  border-radius: 2px;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+.react-tagsinput-errortag {
+  background-color: #f29e9e;
+  border: 1px solid #cf280d;
+  color: #cb1806;
+  border-radius: 2px;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+.react-tagsinput-defaulttag {
+  background-color: #dfd9d9;
+  border: 1px solid #1b1b1b;
+  color: #1b1b1b;
+  border-radius: 2px;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 0px;
+  margin-right: 2px;
+  padding: 2px;
+}
+
+.react-tagsinput-defaulttag, .react-tagsinput-errortag, .react-tagsinput-tag{
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.react-tagsinput-remove {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.react-tagsinput-tag a::before {
+  content: " ×";
+}
+
+.react-tagsinput-errortag a::before {
+  content: " ×";
+  color: #cb1806;
+  position: relative;
+  float: left;
+}
+.tag{
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  float:left;
+  position: relative;
+  max-width:80px !important;
+  cursor: default;
+}
+
+.react-tagsinput-input {
+  background: transparent;
+  border: 0;
+  color: #777;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  margin-top: 1px;
+  outline: none;
+  padding: 5px;
+  width: 100px;
+  vertical-align: top;
+}
+
+ .react-tagsinput-input::-webkit-scrollbar {
+  width: 7px;
+  height: 1px;
   }
-  to {
-    transform: rotate(360deg);
+
+.react-tagsinput-input::-webkit-scrollbar-track {
+background: #f5f5f5;
+border-radius: 10px;
+}
+
+.react-tagsinput-input::-webkit-scrollbar-thumb {
+border-radius: 10px;
+background: #CCC;
+}
+
+.react-tagsinput-input::-webkit-scrollbar-thumb:hover {
+  background: #999;
   }
+
+.react-tagsinput-input::-moz-scrollbar {
+  width: 7px;
+  height: 1px;
+  }
+.react-tagsinput-input::-moz-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.react-tagsinput-input::-moz-scrollbar-thumb {
+border-radius: 10px;
+background: #ccc;
+}
+
+.react-tagsinput-input::-moz-scrollbar-thumb:hover {
+background: #999;
+}
+
+.react-tagsinput-inputs {
+  background: transparent;
+    border: 0;
+    color: #777;
+    font-family: inherit;
+    /* font-size: 13px; */
+    font-weight: 400;
+    margin-bottom: 6px;
+    margin-top: 1px;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    vertical-align: top;
+    height: 100%;
 }

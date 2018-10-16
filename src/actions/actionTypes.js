@@ -1,0 +1,19 @@
+// country
+export const FETCH_COUNTRIES = 'FETCH_COUNTRIES';
+export const UPDATE_COUNTRIES = 'UPDATE_COUNTRIES';
+
+// state
+export const FETCH_STATES = 'FETCH_STATES';
+export const UPDATE_STATES = 'UPDATE_STATES';
+
+// city
+export const FETCH_CITIES = 'FETCH_CITIES';
+export const UPDATE_CITIES = 'UPDATE_CITIES';
+
+// dateOfBirth
+export const FETCH_DATEOFBIRTH = 'FETCH_DATEOFBIRTH';
+export const UPDATE_DATEOFBIRTH = 'UPDATE_DATEOFBIRTH';
+
+// dateOfDeath
+export const FETCH_DATEOFDEATH = 'FETCH_DATEOFDEATH';
+export const UPDATE_DATEOFDEATH = 'UPDATE_DATEOFDEATH';
