@@ -20,13 +20,6 @@ class CheckBoxList extends Component {
         this.props.getSelectedCheckboxList(listOfCheckedBoxes)
     }
     render() {
-        // let checkBoxList = this.props.checkBoxData.map((obj, index) => {
-        //     return (
-        //         <label key={index.toString() + this.props.name}>
-        //             <Checkbox value={obj.keyName} /> {obj.displayName}{' '}
-        //         </label>
-        //     );
-        // });
         let checkBoxList = this.props.checkBoxData.map(item => {
             return (
                 <label key={item.keyName}>

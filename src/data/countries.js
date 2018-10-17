@@ -1,4 +1,4 @@
-let countriesList = [
+let countriesListData = [
     {
         displayName: 'Norway',
         keyName: 'NOR'
@@ -29,4 +29,4 @@ let countriesList = [
     }
 ];
 
-export default countriesList;
+export default countriesListData;

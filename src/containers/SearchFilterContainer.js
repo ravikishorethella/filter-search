@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import * as countryActions from './../actions/countryActions';
+import * as countryActions from '../actions/countryActions';
+import * as stateActions from '../actions/stateActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SearchFiltersList from '../components/topPanel/SearchFiltersList'
@@ -11,6 +12,7 @@ class SearchFilterContainer extends Component {
                 {
                     <SearchFiltersList
                         listOfSelectedCountries={this.props.countryList}
+                        listOfSelectedStates={this.props.stateList}
                         actions={this.props.actions}
                     />
                 }
@@ -21,14 +23,16 @@ class SearchFilterContainer extends Component {
 
 function mapStateToProps(state) {
     return {
-        countryList: state.country
+        countryList: state.country,
+        stateList: state.state,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
-            ...countryActions
+            ...countryActions,
+            ...stateActions,
         }, dispatch)
     }
 }
