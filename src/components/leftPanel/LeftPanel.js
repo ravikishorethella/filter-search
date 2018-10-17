@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import CountriesList from './CountriesList';
 import StatesList from './StatesList';
+import CitiesList from './CitiesList';
 import countriesListData from '../../data/countries';
 import statesListData from '../../data/states';
+import citiesListData from '../../data/cities';
 
 class LeftPanel extends Component {
     constructor(props) {
@@ -10,6 +12,7 @@ class LeftPanel extends Component {
         this.state = {
             countries: [],
             states: [],
+            cities: [],
         }
     }
     render() {
@@ -29,6 +32,14 @@ class LeftPanel extends Component {
                         getSelectedStatesList={this.props.getSelectedStatesList}
                         statesListData={statesListData}
                         updatedList={this.props.updatedListOfSelectedStates}
+                    />
+                </div>
+                <div className="field-set">
+                    <h4 style={{ textAlign: 'center', marginBottom: '10px', textDecoration: 'underline' }}>City</h4>
+                    <CitiesList
+                        getSelectedCitiesList={this.props.getSelectedCitiesList}
+                        citiesListData={citiesListData}
+                        updatedList={this.props.updatedListOfSelectedCities}
                     />
                 </div>
             </Fragment>

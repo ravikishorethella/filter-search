@@ -24,6 +24,12 @@ class SearchFiltersList extends Component {
                 stateList: nextProps.listOfSelectedStates
             })
         }
+        if (JSON.stringify(this.props.listOfSelectedCities) !== JSON.stringify(nextProps.listOfSelectedCities)) {
+            this.updateFilterList(nextProps.listOfSelectedCities, 'city');
+            this.setState({
+                cityList: nextProps.listOfSelectedCities
+            })
+        }
     }
     updateFilterList(nextPropValues, field) {
         let listOfFilterValues = this.state.filterList;
@@ -40,6 +46,7 @@ class SearchFiltersList extends Component {
     tagsInputChange(output) {
         let countryList = [];
         let stateList = [];
+        let cityList = [];
         this.setState({ filterList: output });
         output.forEach(element => {
             let keyValueList = element.split(':');
@@ -49,12 +56,18 @@ class SearchFiltersList extends Component {
             if (keyValueList[0] === 'state') {
                 stateList.push(keyValueList[1])
             }
+            if (keyValueList[0] === 'city') {
+                cityList.push(keyValueList[1]);
+            }
         });
         if (countryList.length !== this.state.countryList.length) {
             this.props.actions.updateCountriesList(countryList);
         }
         if (stateList.length !== this.state.stateList.length) {
             this.props.actions.updateStatesList(stateList);
+        }
+        if (cityList.length !== this.state.cityList.length) {
+            this.props.actions.updateCitiesList(cityList);
         }
     }
     render() {
