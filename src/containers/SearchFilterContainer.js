@@ -3,6 +3,7 @@ import * as countryActions from '../actions/countryActions';
 import * as stateActions from '../actions/stateActions';
 import * as cityActions from '../actions/cityActions';
 import * as dateOfBirthActions from '../actions/dateOfBirthActions';
+import * as dateOfDeathActions from '../actions/dateOfDeathActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SearchFiltersList from '../components/topPanel/SearchFiltersList'
@@ -17,6 +18,7 @@ class SearchFilterContainer extends Component {
                         listOfSelectedStates={this.props.stateList}
                         listOfSelectedCities={this.props.cityList}
                         listOfSelectedDateOfBirth={this.props.dateOfBirthList}
+                        listOfSelectedDateOfDeath={this.props.dateOfDeathList}
                         actions={this.props.actions}
                     />
                 }
@@ -31,6 +33,7 @@ function mapStateToProps(state) {
         stateList: state.state,
         cityList: state.city,
         dateOfBirthList: state.dateOfBirth,
+        dateOfDeathList: state.dateOfDeath
     }
 }
 
@@ -41,6 +44,7 @@ function mapDispatchToProps(dispatch) {
             ...stateActions,
             ...cityActions,
             ...dateOfBirthActions,
+            ...dateOfDeathActions
         }, dispatch)
     }
 }

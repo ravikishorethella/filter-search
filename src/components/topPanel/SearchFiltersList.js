@@ -11,6 +11,7 @@ class SearchFiltersList extends Component {
             stateList: [],
             cityList: [],
             dateOfBirthList: [],
+            dateOfDeathList: []
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -38,6 +39,12 @@ class SearchFiltersList extends Component {
                 dateOfBirthList: nextProps.listOfSelectedDateOfBirth
             })
         }
+        if (JSON.stringify(this.props.listOfSelectedDateOfDeath) !== JSON.stringify(nextProps.listOfSelectedDateOfDeath)) {
+            this.updateFilterList(nextProps.listOfSelectedDateOfDeath, 'dateOfDeath');
+            this.setState({
+                dateOfDeathList: nextProps.listOfSelectedDateOfDeath
+            })
+        }
     }
     updateFilterList(nextPropValues, field) {
         let listOfFilterValues = this.state.filterList;
@@ -56,6 +63,7 @@ class SearchFiltersList extends Component {
         let stateList = [];
         let cityList = [];
         let dateOfBirthList = [];
+        let dateOfDeathList = [];
         this.setState({ filterList: output });
         output.forEach(element => {
             let keyValueList = element.split(':');
@@ -71,6 +79,9 @@ class SearchFiltersList extends Component {
             if (keyValueList[0] === 'dateOfBirth') {
                 dateOfBirthList.push(keyValueList[1]);
             }
+            if (keyValueList[0] === 'dateOfDeath') {
+                dateOfDeathList.push(keyValueList[1]);
+            }
         });
         if (countryList.length !== this.state.countryList.length) {
             this.props.actions.updateCountriesList(countryList);
@@ -83,6 +94,9 @@ class SearchFiltersList extends Component {
         }
         if (dateOfBirthList.length !== this.state.dateOfBirthList.length) {
             this.props.actions.updateDateOfBirthList(dateOfBirthList);
+        }
+        if (dateOfDeathList.length !== this.state.dateOfDeathList.length) {
+            this.props.actions.updateDateOfDeathList(dateOfDeathList);
         }
     }
     render() {
