@@ -61,16 +61,34 @@ class SearchFiltersList extends Component {
             })
         }
         if (JSON.stringify(this.props.listOfSelectedDateOfBirth) !== JSON.stringify(nextProps.listOfSelectedDateOfBirth)) {
-            // TODO
+            if (this.state.dateOfBirthList.length < nextProps.listOfSelectedDateOfBirth.length) {
+                this.updateFilterList(nextProps.listOfSelectedDateOfBirth, 'dateOfBirth');
+            } else {
+                let optionstoremove = this.state.dateOfBirthList.filter((item) => {
+                    return nextProps.listOfSelectedDateOfBirth.indexOf(item) === -1 ? item : null
+                });
+                let tempList = Object.assign([], this.state.filterList);
+                tempList.splice(tempList.indexOf("dateOfBirth:" + optionstoremove[0]), 1);
+                this.setState({ filterList: tempList });
+            }
             this.setState({
                 dateOfBirthList: nextProps.listOfSelectedDateOfBirth
             })
         }
         if (JSON.stringify(this.props.listOfSelectedDateOfDeath) !== JSON.stringify(nextProps.listOfSelectedDateOfDeath)) {
-            // TODO
-            this.setState({
-                dateOfDeathList: nextProps.listOfSelectedDateOfDeath
-            })
+            if (this.state.dateOfDeathList.length < nextProps.listOfSelectedDateOfDeath.length) {
+                this.updateFilterList(nextProps.listOfSelectedDateOfDeath, 'dateOfDeath');
+            } else {
+                let optionstoremove = this.state.dateOfDeathList.filter((item) => {
+                    return nextProps.listOfSelectedDateOfDeath.indexOf(item) === -1 ? item : null
+                });
+                let tempList = Object.assign([], this.state.filterList);
+                tempList.splice(tempList.indexOf("dateOfDeath:" + optionstoremove[0]), 1);
+                this.setState({ filterList: tempList });
+                this.setState({
+                    dateOfDeathList: nextProps.listOfSelectedDateOfDeath
+                })
+            }
         }
     }
     updateFilterList(nextPropValues, field) {
