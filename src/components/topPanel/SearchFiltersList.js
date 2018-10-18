@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import TagsInput from 'react-tagsinput';
+import { list } from 'postcss';
 
 class SearchFiltersList extends Component {
     constructor(props) {
@@ -15,59 +16,79 @@ class SearchFiltersList extends Component {
     }
     componentWillReceiveProps(nextProps) {
         if (JSON.stringify(this.props.listOfSelectedCountries) !== JSON.stringify(nextProps.listOfSelectedCountries)) {
-            this.updateFilterList(nextProps.listOfSelectedCountries, 'country');
+            if (this.state.countryList.length < nextProps.listOfSelectedCountries.length) {
+                this.updateFilterList(nextProps.listOfSelectedCountries, 'country');
+            } else {
+                let optionstoremove = this.state.countryList.filter((item) => {
+                    return nextProps.listOfSelectedCountries.indexOf(item) === -1 ? item : null
+                });
+                let tempList = Object.assign([], this.state.filterList);
+                tempList.splice(tempList.indexOf("country:" + optionstoremove[0]), 1);
+                this.setState({ filterList: tempList });
+            }
             this.setState({
                 countryList: nextProps.listOfSelectedCountries
             })
         }
         if (JSON.stringify(this.props.listOfSelectedStates) !== JSON.stringify(nextProps.listOfSelectedStates)) {
-            this.updateFilterList(nextProps.listOfSelectedStates, 'state');
+            if (this.state.stateList.length < nextProps.listOfSelectedStates.length) {
+                this.updateFilterList(nextProps.listOfSelectedStates, 'state');
+            } else {
+                let optionstoremove = this.state.stateList.filter((item) => {
+                    return nextProps.listOfSelectedStates.indexOf(item) === -1 ? item : null
+                });
+                let tempList = Object.assign([], this.state.filterList);
+                tempList.splice(tempList.indexOf("state:" + optionstoremove[0]), 1);
+                this.setState({ filterList: tempList });
+            }
             this.setState({
                 stateList: nextProps.listOfSelectedStates
             })
         }
         if (JSON.stringify(this.props.listOfSelectedCities) !== JSON.stringify(nextProps.listOfSelectedCities)) {
-            this.updateFilterList(nextProps.listOfSelectedCities, 'city');
+            if (this.state.cityList.length < nextProps.listOfSelectedCities.length) {
+                this.updateFilterList(nextProps.listOfSelectedCities, 'city');
+            } else {
+                let optionstoremove = this.state.cityList.filter((item) => {
+                    return nextProps.listOfSelectedCities.indexOf(item) === -1 ? item : null
+                });
+                let tempList = Object.assign([], this.state.filterList);
+                tempList.splice(tempList.indexOf("city:" + optionstoremove[0]), 1);
+                this.setState({ filterList: tempList });
+            }
             this.setState({
                 cityList: nextProps.listOfSelectedCities
             })
         }
         if (JSON.stringify(this.props.listOfSelectedDateOfBirth) !== JSON.stringify(nextProps.listOfSelectedDateOfBirth)) {
-            this.updateFilterList(nextProps.listOfSelectedDateOfBirth, 'dateOfBirth');
+            // TODO
             this.setState({
                 dateOfBirthList: nextProps.listOfSelectedDateOfBirth
             })
         }
         if (JSON.stringify(this.props.listOfSelectedDateOfDeath) !== JSON.stringify(nextProps.listOfSelectedDateOfDeath)) {
-            this.updateFilterList(nextProps.listOfSelectedDateOfDeath, 'dateOfDeath');
+            // TODO
             this.setState({
                 dateOfDeathList: nextProps.listOfSelectedDateOfDeath
             })
         }
     }
     updateFilterList(nextPropValues, field) {
-        if (this.state.filterList && nextPropValues.length > this.state.filterList.length) {
-            let listOfFilterValues = this.state.filterList;
-            let addedCountries = nextPropValues.filter(item => {
-                return listOfFilterValues.indexOf(`${field}:${item}`) === -1
-                    ? item
-                    : null;
-            });
-            let keyValueList = addedCountries.map(item => {
-                return `${field}:${item}`;
-            });
-            this.setState(prevState => ({
-                filterList: prevState.filterList.concat(keyValueList)
-            }));
-        } else {
-            let keyValueList = nextPropValues.map(item => {
-                return `${field}:${item}`;
-            });
-            this.setState({
-                filterList: keyValueList
-            });
-        }
+        let listOfFilterValues = this.state.filterList;
+        debugger;
+        let addedCountries = nextPropValues.filter(item => {
+            return listOfFilterValues.indexOf(`${field}:${item}`) === -1
+                ? item
+                : null;
+        });
+        let keyValueList = addedCountries.map(item => {
+            return `${field}:${item}`;
+        });
+        this.setState(prevState => ({
+            filterList: prevState.filterList.concat(keyValueList)
+        }));
     }
+
     tagsInputChange(output) {
         let countryList = [];
         let stateList = [];
