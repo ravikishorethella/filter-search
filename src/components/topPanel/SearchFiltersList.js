@@ -19,7 +19,7 @@ class SearchFiltersList extends Component {
             if (this.state.countryList.length < nextProps.listOfSelectedCountries.length) {
                 this.updateFilterList(nextProps.listOfSelectedCountries, 'country');
             } else {
-                let optionstoremove = this.state.countryList.filter((item) => {
+                let optionstoremove = this.state.countryList.filter(item => {
                     return nextProps.listOfSelectedCountries.indexOf(item) === -1 ? item : null
                 });
                 let tempList = Object.assign([], this.state.filterList);
@@ -34,7 +34,7 @@ class SearchFiltersList extends Component {
             if (this.state.stateList.length < nextProps.listOfSelectedStates.length) {
                 this.updateFilterList(nextProps.listOfSelectedStates, 'state');
             } else {
-                let optionstoremove = this.state.stateList.filter((item) => {
+                let optionstoremove = this.state.stateList.filter(item => {
                     return nextProps.listOfSelectedStates.indexOf(item) === -1 ? item : null
                 });
                 let tempList = Object.assign([], this.state.filterList);
@@ -49,7 +49,7 @@ class SearchFiltersList extends Component {
             if (this.state.cityList.length < nextProps.listOfSelectedCities.length) {
                 this.updateFilterList(nextProps.listOfSelectedCities, 'city');
             } else {
-                let optionstoremove = this.state.cityList.filter((item) => {
+                let optionstoremove = this.state.cityList.filter(item => {
                     return nextProps.listOfSelectedCities.indexOf(item) === -1 ? item : null
                 });
                 let tempList = Object.assign([], this.state.filterList);
@@ -64,7 +64,7 @@ class SearchFiltersList extends Component {
             if (this.state.dateOfBirthList.length < nextProps.listOfSelectedDateOfBirth.length) {
                 this.updateFilterList(nextProps.listOfSelectedDateOfBirth, 'dateOfBirth');
             } else {
-                let optionstoremove = this.state.dateOfBirthList.filter((item) => {
+                let optionstoremove = this.state.dateOfBirthList.filter(item => {
                     return nextProps.listOfSelectedDateOfBirth.indexOf(item) === -1 ? item : null
                 });
                 let tempList = Object.assign([], this.state.filterList);
@@ -79,21 +79,20 @@ class SearchFiltersList extends Component {
             if (this.state.dateOfDeathList.length < nextProps.listOfSelectedDateOfDeath.length) {
                 this.updateFilterList(nextProps.listOfSelectedDateOfDeath, 'dateOfDeath');
             } else {
-                let optionstoremove = this.state.dateOfDeathList.filter((item) => {
+                let optionstoremove = this.state.dateOfDeathList.filter(item => {
                     return nextProps.listOfSelectedDateOfDeath.indexOf(item) === -1 ? item : null
                 });
                 let tempList = Object.assign([], this.state.filterList);
                 tempList.splice(tempList.indexOf("dateOfDeath:" + optionstoremove[0]), 1);
                 this.setState({ filterList: tempList });
-                this.setState({
-                    dateOfDeathList: nextProps.listOfSelectedDateOfDeath
-                })
             }
+            this.setState({
+                dateOfDeathList: nextProps.listOfSelectedDateOfDeath
+            })
         }
     }
     updateFilterList(nextPropValues, field) {
         let listOfFilterValues = this.state.filterList;
-        debugger;
         let addedCountries = nextPropValues.filter(item => {
             return listOfFilterValues.indexOf(`${field}:${item}`) === -1
                 ? item

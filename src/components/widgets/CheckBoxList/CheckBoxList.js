@@ -9,9 +9,12 @@ class CheckBoxList extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            selectedCheckboxes: nextProps.updatedList
-        })
+        if (this.props.updatedList !== nextProps.updatedList) {
+            this.setState({
+                selectedCheckboxes: nextProps.updatedList
+            })
+        }
+
     }
     onCheckboxListChange(listOfCheckedBoxes) {
         this.setState({
